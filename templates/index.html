@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>歡迎光臨</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <h1>歡迎光臨我的部落格</h1>
+        <hr>  
+        {% for post in posts %} <!-- 關鍵字 -->
+        <p style='font-family:微軟正黑體;font-size:16pt;font-weight:1pt;'>
+            <a href="/post/{{post.slug}}"> {{post.title}} </a>  <!-- 超連結 -->
+        </p>
+        {% endfor %}
+        
+        
+        <hr>
+        <h3>現在時間`:{{now}}</h3>
+        <script src="" async defer></script>
+    </body>
+</html>
