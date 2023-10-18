@@ -18,9 +18,10 @@ from django.contrib import admin
 from django.urls import path
 # from mysite.views import homepage  
 from mysite import views as mv
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('',homepage) #什麼都沒輸入預設到homepage
+    # path('',homepage) #什麼都沒輸入'預設'到homepage
     path('',mv.homepage, name="homepage"),
     path('post/<slug:slug>/', mv.showpost, name="showpost") #<變數>
-]
+]          #<資料型態:變數>
