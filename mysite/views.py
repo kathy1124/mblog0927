@@ -11,14 +11,14 @@ def homepage(request):
     return render(request ,'index.html', locals())
                 #把 urls.py 的變數傳進來0
 def showpost(request, slug): # <-
-    try: 
+    # try: 
         post = Post.objects.get(slug=slug)
-        if post != None:
-            return render(request ,'post.html', locals())
-        else: #如果網址錯誤->導到首頁
-            return redirect("/")
-    except:
-        return redirect("/")
+        # if post != None:
+        return render(request ,'post.html', locals())
+    #     else: #如果網址錯誤->導到首頁
+    #         return redirect("/")
+    # except:
+    #     return redirect("/")
     # select * from post where slug=%slug
 '''
 def homepage(request):
