@@ -49,7 +49,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+#網址對應
 ROOT_URLCONF = 'mblog0927.urls'
 #樣板
 TEMPLATES = [

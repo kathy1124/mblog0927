@@ -10,7 +10,7 @@ class Post(models.Model):
     class Meta:      #'-'反向排序
         ordering = ('-pub_date', ) #排序大到小
     
-    def __str__(self) -> str:  #python內建
+    def __str__(self) -> str:  #python內建-
         return self.title   #產生項目資料時以文章標題的內容為代表
     
 class Product(models.Model):
@@ -23,4 +23,4 @@ class Product(models.Model):
     name = models.CharField(max_length=20)
     price = models.PositiveIntegerField()
     size = models.CharField(max_length=1, choices=SIZES)
-    result = models.BooleanField()
+

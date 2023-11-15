@@ -25,5 +25,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # path('',homepage) #什麼都沒輸入'預設'到homepage
     path('',mv.homepage, name="homepage"),
-    path('post/<slug:slug>/', mv.showpost, name="showpost") #<變數>
-]          #<資料型態:變數>
+    path('post/<slug:slug>/', mv.showpost, name="showpost"), #<變數> #<資料型態:變數>
+    path('about/',mv.about),
+    path('about/<int:num>',mv.about, {'num':1}),
+    path('post/<int:yr>/<int:mon>/<int:day>/<int:post_num>',mv.Post, name='post-url' ),
+]         

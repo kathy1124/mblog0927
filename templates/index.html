@@ -2,11 +2,13 @@
 {% block title %}歡迎光臨我的部落格{% endblock title %}
 {% block headmessage%} <h3 style='font-family:標楷體;'>本站文章列表</a> {% endblock headmessage %}
 {% block content%}
+測試
+<a href="{% url 'post-url' 2015 12 1 01 %}">show POST</a>
 {% for post in posts %}
 <div class='card'>
      <div class='card-header'>
          <p style='font-family:微軟正黑體;font-size:14pt;font-weight:bold;'>
-             <a href='/post/{{post.slug}}'>{{ post.title }}</a>
+            <a href={% url 'showpost' post.slug %}>{{ post.title }}</a>    {% comment %} 等於 <a href='/post/{{post.slug}}'>{{ post.title }}</a> {% endcomment %}
          </p>
       </div>
       <div class='card-body' style='background-color:#ffffff'>
