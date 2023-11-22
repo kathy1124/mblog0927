@@ -1,9 +1,20 @@
 {% extends "base2.html" %} <!--繼承base.html-->
 {% block title %}歡迎光臨我的部落格{% endblock title %}
-{% block headmessage%} <h3 style='font-family:標楷體;'>本站文章列表</a> {% endblock headmessage %}
+{% block headmessage%} 
+<h3 style='font-family:標楷體;'>本站文章列表</a> 
+    hour:{{hour}}
+{% if hour > 13 %} 
+晚安
+{% elif hour < 10 %} 
+早安
+{% else %} 
+你好
+{% endif %}
+
+{% endblock headmessage %}
 {% block content%}
-測試
-<a href="{% url 'post-url' 2015 12 1 01 %}">show POST</a>
+{% comment %} 測試
+<a href="{% url 'post-url' 2015 12 1 01 %}">show POST</a> {% endcomment %}
 {% for post in posts %}
 <div class='card'>
      <div class='card-header'>
@@ -24,4 +35,4 @@
   </div>
   <br>  <!--空一行-->
   {% endfor %}
-{% endblock %}
+{% endblock%}

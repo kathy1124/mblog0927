@@ -29,4 +29,6 @@ urlpatterns = [
     path('about/',mv.about),
     path('about/<int:num>',mv.about, {'num':1}),
     path('post/<int:yr>/<int:mon>/<int:day>/<int:post_num>',mv.Post, name='post-url' ),
+    path('carlist/', mv.carlist), #網址,函式
+    path('carlist/<int:maker>/', mv.carlist, name='carlist-url'),
 ]         
