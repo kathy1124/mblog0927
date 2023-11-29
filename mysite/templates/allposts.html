@@ -1,0 +1,32 @@
+{% extends "base2.html" %} <!--繼承base.html-->
+{% block title %}歡迎光臨我的部落格{% endblock title %}
+{% block headmessage%} 
+<h3 style='font-family:標楷體;'>本站文章列表- table 版本</a> 
+    {% now 'Y m d D' %}
+{% endblock headmessage %}
+
+{% block content %}
+{% for post in posts %} {% comment %}  #posts -> views.py - show_all_post  {% endcomment %}
+
+{% if forloop.first %}
+<table>
+    <tr background="#cccccc">
+        <th>Title</th>
+        <th>SLUG</th>
+        <th>pub date</th>
+        <th>檢視留言</th>
+    </tr>
+{% endif %}
+    <tr background='{% cycle "#ffccff" "#ccffcc" %}'>
+        <td>{{ post.title }} </td>
+        <td>{{ post.slug }}</td>
+        <td>{{ post.pub_date }}</td>
+        <td><a href="{% url 'show-comments' post.id %}">view</a></td>
+    </tr>
+
+{% if forloop.last %}
+</table>
+{% endif %}
+
+{% endfor %}
+{% endblock content %}

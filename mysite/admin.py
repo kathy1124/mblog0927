@@ -1,5 +1,5 @@
 from django.contrib import admin
-from mysite.models import Post   #定義的post納入管理
+from mysite.models import Post, Product, Comment #定義的post納入管理
 from mysite.models import Product
 
 # Register your models here.
@@ -9,3 +9,8 @@ class PostAdmin(admin.ModelAdmin):
 admin.site.register(Post, PostAdmin)
 
 admin.site.register(Product)
+
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('text', 'pub_date') 
+admin.site.register(Comment, CommentAdmin)
+

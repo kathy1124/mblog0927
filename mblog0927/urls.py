@@ -26,9 +26,11 @@ urlpatterns = [
     # path('',homepage) #什麼都沒輸入'預設'到homepage
     path('',mv.homepage, name="homepage"),
     path('post/<slug:slug>/', mv.showpost, name="showpost"), #<變數> #<資料型態:變數>
+    path('post/', mv.show_all_post, name="show-all-post"), #看留言
+    path('post/<int:post_id>/comments', mv.show_comments, name='show-comments'), #post唯一的postid show出comments
     path('about/',mv.about),
     path('about/<int:num>',mv.about, {'num':1}),
     path('post/<int:yr>/<int:mon>/<int:day>/<int:post_num>',mv.Post, name='post-url' ),
-    path('carlist/', mv.carlist), #網址,函式
+    path('carlist/', mv.carlist), #path('網址',函式)
     path('carlist/<int:maker>/', mv.carlist, name='carlist-url'),
 ]         
