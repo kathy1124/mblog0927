@@ -16,7 +16,8 @@ def homepage(request):
 def show_all_post(request):
     posts = Post.objects.all()
     return render(request, 'allposts.html', locals())    #把post show出來
-    
+
+#1129
 def showpost(request, slug): # <-
     # try: 
     post = Post.objects.get(slug=slug)
@@ -27,11 +28,49 @@ def showpost(request, slug): # <-
     # except:
     #     return redirect("/")
     # select * from post where slug=%slug
-    
+
+#1129
 def show_comments(request, post_id):
   # comments = Comment.objects.filter(post=post_id) 
     comments = Post.objects.get(id=post_id).comment_set.all()
     return render(request, 'comments.html', locals()) 
+
+
+
+
+#1206 
+def new_post(request):
+    print(f'form method: {request.method}')
+    if request.method == 'GET':
+        return render(request, 'myform_1.html', locals())
+    elif request.method == 'POST':
+        title = request.POST['title']
+        slug = request.POST['slug']
+        content = request.POST['content']
+        post = Post(title=title, slug=slug, body=content)
+        post.save()
+        return render(request, 'myform_1.html', locals())
+    ''' 
+    elif request.method == 'POST':
+        username = request.POST['user_id']
+        password = request.POST['password']
+        if username == 'ntub' and password == 'a123' :
+            is_validated = True
+        else:
+            is_validated = False
+        
+        print(f'post-username:{username}, password:{password}')
+        return render(request, 'myform_1.html', locals())   
+    
+    try:
+        username = request.GET['user_id']
+        password = request.GET['password']
+        print(f'username:{username}, password:{password}')
+        return render(request, 'myform_1.html', locals())
+    except:
+        return render(request, 'myform_1.html', locals())
+    '''
+
     
 import random  #random 隨機
 def about(request, num=-1):

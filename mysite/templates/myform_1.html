@@ -1,0 +1,20 @@
+{% extends "base2.html" %}
+{% block title %} 表單輸入{% endblock %}
+{% block headmessage%}
+<a  style='font-family:微軟正黑體;'href='/'>回首頁</a>
+
+
+{% endblock headmessage%}    
+{% block content %}
+<h2>HTML Forms</h2>
+<form name="myform" method="post">
+        {% csrf_token %}
+    <label for="fname">標題</lable><br>   
+    <input type="title" id="title" name="title"><br>      {% comment %} name="  " -> key {% endcomment %}
+    <label for="lname">slug:</label><br>
+    <input type="text" id="slug" name="slug"><br><br>
+    <textarea for="content" name="content" cols='30'>內文:</textarea><br>
+    <input type="submit" value="送出">
+</form>
+
+{% endblock content %} 
