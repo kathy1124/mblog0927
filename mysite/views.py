@@ -39,6 +39,8 @@ def show_comments(request, post_id):
 
 
 #1206 
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 def new_post(request):
     print(f'form method: {request.method}')
     if request.method == 'GET':
@@ -49,7 +51,8 @@ def new_post(request):
         content = request.POST['content']
         post = Post(title=title, slug=slug, body=content)
         post.save()
-        return render(request, 'myform_1.html', locals())
+        return HttpResponseRedirect(reverse('show-all-post'))
+      # return render(request, 'myform_1.html', locals())
     ''' 
     elif request.method == 'POST':
         username = request.POST['user_id']
