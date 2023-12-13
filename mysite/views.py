@@ -9,6 +9,7 @@ def homepage(request):
     posts = Post.objects.all()
     now = datetime.now()
     hour = now.timetuple().tm_hour
+    years = range(1960,2024)  #1960~2023
     # print(f'hour = {hour}')
     return render(request ,'index.html', locals())
                 #把 urls.py 的變數傳進來0   locals() = {posts:posts, now,now}
@@ -49,7 +50,8 @@ def new_post(request):
         title = request.POST['title']
         slug = request.POST['slug']
         content = request.POST['content']
-        post = Post(title=title, slug=slug, body=content)
+        category = request.POST.getlist['category']
+        post = Post(title=title, slug=slug, body=content, category=category)
         post.save()
         return HttpResponseRedirect(reverse('show-all-post'))
       # return render(request, 'myform_1.html', locals())

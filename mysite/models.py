@@ -5,6 +5,7 @@ class Post(models.Model):
     title = models.CharField(max_length=200) #標題
     slug = models.CharField(max_length=200)  #連結
     body = models.TextField()                #長文字(內文)
+    category = models.TextField(null=True)   #裡面已有資料要加null=True
     pub_date = models.DateTimeField(auto_now_add=True) #本文發表的時間
                                     #資料庫在建立時自動加入當時的時間
     class Meta:      #'-'反向排序

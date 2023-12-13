@@ -1,16 +1,26 @@
 {% extends "base2.html" %} <!--繼承base.html-->
 {% block title %}歡迎光臨我的部落格{% endblock title %}
 {% block headmessage%} 
-<h3 style='font-family:標楷體;'>本站文章列表</a> 
-    hour:{{hour}}
+<h3 style='font-family:標楷體;'>本站文章列表</h3> 
+{% comment %} hour:{{hour}}
 {% if hour > 13 %} 
 晚安
 {% elif hour < 10 %} 
 早安
 {% else %} 
 你好
-{% endif %}
-
+{% endif %} {% endcomment %}
+<label for="byear">無意義年份</label>
+<select name="byear">
+    {% for year in years %}
+    <option value="{{year}}">西元 {{year}}</option>
+    {% endfor %}
+</select>
+<input type='radio' name='ryear' checked>2000</input>
+<input type='radio' name='ryear' >2001</input>
+<input type='radio' name='ryear' >2002</input>
+<input type='radio' name='ryear' >2003</input>
+<input type='radio' name='ryear' >2004</input>
 {% endblock headmessage %}
 {% block content%}
 {% comment %} 測試

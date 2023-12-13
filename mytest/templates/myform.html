@@ -1,0 +1,32 @@
+{% extends "base2.html" %}
+{% block title %} 表單輸入{% endblock %}
+{% block headmessage%}
+<a  style='font-family:微軟正黑體;'href='/'>回首頁</a>
+{% endblock headmessage%}    
+
+{% block content %}
+<h2>HTML Forms</h2>
+<form action="" method="post">
+        {% csrf_token %}
+    <label for="title">心情</lable><br>   
+        {% for m in moods %}
+            <input type="radio" name="mood" value="{{m.ststus}}">{{ m.status }}<br>      
+        {% endfor %}
+        <br>
+        心情留言板：<br/>
+        <textarea name='user_post' row=3 cols=70></textarea>
+        <br/>
+        <label for="title"></label><br>
+        <input type="radio" id='tech' name="category" value='科技'></input>
+
+        <input type="radio" id='other' name="category" value='其他'></input>
+        <label for="other"></label><br>
+
+
+        <label for="lname">slug:</label><br>
+        <input type="text" id="slug" name="slug"><br><br>
+        <textarea for="content" name="content" cols='30'>內文:</textarea><br>
+        <input type="submit" value="送出">
+        
+</form>
+{% endblock content %} 

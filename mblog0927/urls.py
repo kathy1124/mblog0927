@@ -20,6 +20,7 @@ from django.contrib import admin
 from django.urls import path
 # from mysite.views import homepage  
 from mysite import views as mv
+from mytest import views as testv
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -33,5 +34,6 @@ urlpatterns = [
     path('post/<int:yr>/<int:mon>/<int:day>/<int:post_num>',mv.Post, name='post-url' ),
     path('carlist/', mv.carlist, name='carlist'), #path('網址',函式)
     path('carlist/<int:maker>/', mv.carlist, name='carlist-url'),
-    path('post/new', mv.new_post, name='post-new') 
+    path('post/new', mv.new_post, name='post-new'),
+    path('test',testv.index, name='test-now' )
 ]         
