@@ -35,5 +35,6 @@ urlpatterns = [
     path('carlist/', mv.carlist, name='carlist'), #path('網址',函式)
     path('carlist/<int:maker>/', mv.carlist, name='carlist-url'),
     path('post/new', mv.new_post, name='post-new'),
-    path('test',testv.index, name='test-now' )
+    path('test',mv.homepage,name='test-name'),
+    path('test/new',testv.index,name='test-name'),
 ]         

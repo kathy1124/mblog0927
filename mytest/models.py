@@ -8,7 +8,7 @@ class Mood(models.Model):
         return self.status
 
 class Post(models.Model):
-    mood = models.ForeignKey('Mood', on_delete=models.CASCADE)
+    moods = models.ForeignKey('Mood', on_delete=models.CASCADE)
     nickname = models.CharField(max_length=10, default='不願意透漏身份的人')
     message = models.TextField(null=False)
     del_pass = models.CharField(max_length=10)
