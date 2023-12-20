@@ -1,4 +1,6 @@
 from django import forms
+from mytest import models
+from mytest.models import Post
 
 class ContactForm(forms.Form):
     CITY = [
@@ -14,3 +16,10 @@ class ContactForm(forms.Form):
     user_school = forms.BooleanField(label='是否在學', required=False)
     user_email = forms.EmailField(label='電子郵件')  
     user_message = forms.CharField(label='您的意見', widget=forms.Textarea)  #widget=forms.Textarea -> 擴增成為大量文字輸入欄位，亦即<textarea>標籤。
+
+
+class PostForms(forms.MODELForm):
+    class Meta:
+        model = Post 
+        fields = ['moods','nickname', 'message' , 'del_pass']
+    
