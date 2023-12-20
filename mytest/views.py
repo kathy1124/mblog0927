@@ -35,10 +35,22 @@ def delpost(request,pid):
         except:
             print('刪除錯誤!! pid=',pid)
             pass
-    return redirect('/')
+    return redirect("/")
 
 def contact(request):
-    form = ContactForm()
-    return render(request, 'myContact.html',locals()) 
+    if request.method == 'GET':
+        form = ContactForm()
+        return render(request, 'myContact.html',locals()) 
+    elif request.method == 'POST':
+        form = ContactForm(request.POST)#抓資料
+        if form.is_valid():
+            user_name = form.cleaned_data['user_name']
+            user_message = form.cleaned_data['user_message']
+            print('user_name:',user_name)
+            print('user_message:',user_message)
+        return render(request, 'myContact.html', locals())
+    else:
+        message = "ERROR"
+        return render(request, 'myContact.html', locals())
 
-
+    

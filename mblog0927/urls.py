@@ -38,5 +38,5 @@ urlpatterns = [
     path('test',mv.homepage,name='test-name'),
     path('test/new',testv.index,name='test-name'),
     path('test/delpost/<int:pid>',testv.delpost),
-    path('test/contact',testv.contact)
+    path('test/contact',testv.contact,name='test-contact')
 ]         
