@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from mytest.models import Post, Mood
 from django.shortcuts import redirect
+from mytest.forms import ContactForm
 
 def index(request): 
     posts = Post.objects.filter(enabled=True).order_by('-pub_time')[:30]#[:30]取前三十個,日期排序
@@ -26,3 +27,18 @@ def index(request):
             message = 'post/get 出現錯誤'
             return render(request,'myform.html',locals())
     
+def delpost(request,pid):
+    if pid:
+        try:
+            post = Post.objects.get(id=pid)
+            post.delete()
+        except:
+            print('刪除錯誤!! pid=',pid)
+            pass
+    return redirect('/')
+
+def contact(request):
+    form = ContactForm()
+    return render(request, 'myContact.html',locals()) 
+
+

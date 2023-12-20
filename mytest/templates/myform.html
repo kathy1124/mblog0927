@@ -1,18 +1,17 @@
 {% extends 'base2.html' %}<!--會先繼承base裡面的網站 然後如果後面有提到block ...就是post的把base的蓋掉-->
-
 {% block title %}表單輸入-2{% endblock title %}<!--存到資料庫-->
-{% block headmessage %} 
-{% endblock headmessage %}
+{% block headmessage %} {% endblock headmessage %}
 {% block content %}<!--在裡面放表單-->
-<script>
-    function go_delete(id){
-        var user_pass = document.getElementById('user_pass').value;
-        if (user_pass != "") {
-            var usr = '/' + id + '/' + user_pass;
+{% comment %}  getElementById ->  其屬性與指定字串匹配的元素。快速存取特定元素的方法。 {% endcomment %}
+<script> 
+     function go_delete(id){   
+        //var user_pass = document.getElementById('user_pass').value;
+        //if (user_pass != "") {
+            var usr = 'delpost/' + id;
             window.location = usr;
-        }
+        //}
     }
-    </script>
+</script>
 
 <h2>HTML Forms</h2>
 {% if message %}
@@ -48,11 +47,12 @@
 <div class="row">
     {% for p in posts %}
      <div class="col-sm-12 col-md-4">
-        <div class='card'>
+        <div class='card'>    {% comment %} text-white 文字顏色 {% endcomment %}
             <div class='card-header text-white bg-primary'>【{{ p.nickname }}】覺得{{ p.moods }}</div>
             <div class='card-body'>{{ p.message | linebreaks }}</div>
             <div class='card-footer' align='right'>
                 <i><small>{{ p.pub_time }}</small></i>
+                <i class="bi bi-trash"  onclick='go_delete({{p.id}})'></i>
             </div>
         </div>
     </div>
