@@ -38,5 +38,8 @@ urlpatterns = [
     path('test',mv.homepage,name='test-name'),
     path('test/new',testv.index,name='test-name'),
     path('test/delpost/<int:pid>',testv.delpost),
-    path('test/contact',testv.contact,name='test-contact')
+    path('test/contact',testv.contact,name='test-contact'),
+    # path('post2db/', testv.post2db),
+    path('register/', testv.register, name= 'register'),
+    path('login/',testv.login, name='login')
 ]         
