@@ -11,6 +11,10 @@ def homepage(request):
     hour = now.timetuple().tm_hour
     years = range(1960,2024)  #1960~2023
     # print(f'hour = {hour}')
+    if request.user.is_authenticated:
+        user_name = request.user.username
+    else:
+        user_name="未登入"
     return render(request ,'index.html', locals())
                 #把 urls.py 的變數傳進來0   locals() = {posts:posts, now,now}
            
@@ -131,3 +135,11 @@ def homepage(request):
         post_lists.append(f'No. {counter}-{post} <br>') #{}包變數 <br>換行
     return HttpResponse(post_lists)
 '''
+def userinfo(request):
+    if request.user.is_authenticated:
+        username = request.user.username
+        try:
+            userinfo = Post.objects.get(username=username)
+        except:
+            pass
+    return render(request, 'userinfo.html', locals())

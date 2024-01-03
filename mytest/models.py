@@ -18,4 +18,14 @@ class Post(models.Model):
     def __str__(self):
         return self.message
 
+#0103
+from django.contrib import auth
 
+class Profile(models.Model):
+    user = models.OneToOneField(auth.models.User, on_delete=models.CASCADE)
+    height = models.PositiveIntegerField(default=160)
+    male = models.BooleanField(default=False)
+    website = models.URLField(null=True)
+	
+    def __str__(self):
+        return self.user.username

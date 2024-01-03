@@ -1,5 +1,5 @@
 from django.contrib import admin
-from mytest.models import Post, Mood
+from mytest.models import Post, Mood, Profile
 # Register your models here.
 
 class PostAdmin(admin.ModelAdmin):
@@ -10,3 +10,4 @@ class CommentAdmin(admin.ModelAdmin):
     
 admin.site.register(Post, PostAdmin)
 admin.site.register(Mood)
+admin.site.register(Profile)
