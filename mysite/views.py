@@ -135,11 +135,3 @@ def homepage(request):
         post_lists.append(f'No. {counter}-{post} <br>') #{}包變數 <br>換行
     return HttpResponse(post_lists)
 '''
-def userinfo(request):
-    if request.user.is_authenticated:
-        username = request.user.username
-        try:
-            userinfo = Post.objects.get(username=username)
-        except:
-            pass
-    return render(request, 'userinfo.html', locals())

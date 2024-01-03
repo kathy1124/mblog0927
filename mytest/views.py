@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from mytest.models import Post, Mood
+from mytest.models import Post, Mood, Profile
 from django.shortcuts import redirect
-from mytest.forms import ContactForm ,UserRegisterForm,LoginForm
+from mytest.forms import ContactForm , UserRegisterForm,LoginForm, ProfileForm
 # PostForm
 def index(request): 
     posts = Post.objects.filter(enabled=True).order_by('-pub_time')[:30]#[:30]取前三十個,日期排序
@@ -119,4 +119,26 @@ def login(request):
         message = "ERROR"
         return render(request, 'login.html', locals())
     
-
+# @login_required(login_url='/login/') 
+def profile(request):
+    if request.method == 'GET':
+        if request.user.is_authenticated:
+            username = request.user.username
+            try:
+                user = User.objects.get(username=username)
+                userinfo = Profile.objects.get(user=user)
+                form = ProfileForm(userinfo)
+            except:
+                form = ProfileForm()
+        return render(request, 'userinfo.html', locals())
+    elif request.method == 'POST':
+        form = ProfileForm(request.POST)
+        if form.is_valid():
+            form.save()
+            form = ProfileForm()
+            message = f'成功儲存！請記得你的編輯密碼!，訊息需經審查後才會顯示。'
+        return render(request, 'userinfo.html', locals())
+    else:
+        message = "ERROR"
+        print('出錯回首頁')
+        redirect("/")
